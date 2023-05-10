@@ -192,19 +192,18 @@ If you use the appender library \(`aws-lambda-java-log4j2`\), you must also conf
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.2.2</version>
+        <version>3.4.1</version>
         <configuration>
           <createDependencyReducedPom>false</createDependencyReducedPom>
         </configuration>
         <executions>
           <execution>
-            <phase>package</phase>
             <goals>
               <goal>shade</goal>
             </goals>
             <configuration>
               <transformers>
-                <transformer implementation="com.github.edwgiz.maven_shade_plugin.log4j2_cache_transformer.PluginsCacheFileTransformer">
+                <transformer implementation="org.apache.logging.log4j.maven.plugins.shade.transformer.Log4j2PluginCacheFileTransformer">
                 </transformer>
               </transformers>
             </configuration>
@@ -212,9 +211,9 @@ If you use the appender library \(`aws-lambda-java-log4j2`\), you must also conf
         </executions>
         <dependencies>
           <dependency>
-            <groupId>com.github.edwgiz</groupId>
-            <artifactId>maven-shade-plugin.log4j2-cachefile-transformer</artifactId>
-            <version>2.13.0</version>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-transform-maven-shade-plugin-extensions</artifactId>
+            <version>0.1.0</version>
           </dependency>
         </dependencies>
       </plugin>
